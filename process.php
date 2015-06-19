@@ -22,19 +22,19 @@ function register_user($post) // just a parameter called post
 {
 	if(empty($_POST['first_name'])) 
 	{
-		$errors['first_name'] = "<span class='error'>Please enter your first name</span>";
+		$errors['first_name'] = "Please enter your first name";
 	}
 	if(empty($_POST['last_name'])) 
 	{
-		$errors['last_name'] = "<span class='error'>Please enter your last name</span>";
+		$errors['last_name'] = "Please enter your last name";
 	}
 	if(empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{
-			$errors['email'] = "<span class='error'>Please submit a valid email</span>";
+			$errors['email'] = "Please submit a valid email";
 		}
 	if($_POST['password'] != $_POST['passconf']) 
 	{
-		$errors['password'] = "<span class='error'>Passwords must match</span>";
+		$errors['password'] = "Passwords must match";
 	}
 
 	$_SESSION['errors'] = $errors;

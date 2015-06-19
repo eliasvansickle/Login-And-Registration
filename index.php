@@ -18,8 +18,8 @@ require('connection.php');
 			<?php 
 				if(isset($_SESSION['errors']['first_name'])) 
 				{
-					echo $_SESSION['errors']['first_name'];
-					unset($_SESSION['errors']['first_name']);
+					echo "<span class='error'>".$_SESSION['errors']['first_name']."</span>";
+					unset($_SESSION['errors']['first_name']);	
 				}
 			 ?>
 
@@ -28,7 +28,7 @@ require('connection.php');
 			<?php 
 				if(isset($_SESSION['errors']['last_name'])) 
 				{
-					echo $_SESSION['errors']['last_name'];
+					echo "<span class='error'>".$_SESSION['errors']['last_name']."</span>";
 					unset($_SESSION['errors']['last_name']);
 				}
 			 ?>
@@ -38,7 +38,7 @@ require('connection.php');
 			<?php 
 				if(isset($_SESSION['errors']['email'])) 
 				{
-					echo $_SESSION['errors']['email'];
+					echo "<span class='error'>".$_SESSION['errors']['email']."</span>";
 					unset($_SESSION['errors']['email']);
 				}
 			 ?>
@@ -48,7 +48,7 @@ require('connection.php');
 			<?php 
 				if(isset($_SESSION['errors']['password'])) 
 				{
-					echo $_SESSION['errors']['password'];
+					echo "<span class='error'>".$_SESSION['errors']['password']."</span>";
 					unset($_SESSION['errors']['password']);
 				}
 			 ?>
