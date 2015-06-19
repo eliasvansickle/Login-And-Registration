@@ -62,11 +62,18 @@ require('connection.php');
 					unset($_SESSION['errors']['passconf']);
 				}
 			 ?>
-
 			<label for="register"></label>
 			<input type="submit" value="Register">
 
 			<input type="hidden" name="action" value="register">
+			<?php
+				if(isset($_SESSION['registration_success_message']))
+				{
+					echo "<span class='success'>".$_SESSION['registration_success_message']."</span>";
+					unset($_SESSION['registration_success_message']);;
+				} 
+
+			 ?>
 		</form>
 	</div>
 	<div id="login">

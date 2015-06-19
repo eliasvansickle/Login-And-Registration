@@ -40,20 +40,23 @@ function register_user($post) // just a parameter called post
 		$errors['passconf'] = "Passwords must match";
 	}
 	$_SESSION['errors'] = $errors;
-	// header('location: index.php');
 	// die();
 	////////END OF VALIDATION CHECKS////////
 
 	if(!empty($_SESSION['errors']))
 	{
-		// Errors Still exist
+		header('location: index.php');
 	}
 	else // Insert validated user registration information into the database
 	{
 		$query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at)
 				  VALUES ('{$post['first_name']}', '{$post['last_name']}', '{$post['email']}', '{$post['password']}', NOW(), NOW())";
-		echo $query;
+
+		run_mysql_query($query);
+		$_SESSION['registration_success_message'] = "Thank you for registering";
+		header("location: index.php");
 		die();
+
 	}
 
 
