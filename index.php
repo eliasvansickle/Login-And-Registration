@@ -55,6 +55,13 @@ require('connection.php');
 
 			<label for="passconf"></label>
 			<input type="password" name="passconf" placeholder="Password Confirmation">
+			<?php 
+				if(isset($_SESSION['errors']['passconf'])) 
+				{
+					echo "<span class='error'>".$_SESSION['errors']['passconf']."</span>";
+					unset($_SESSION['errors']['passconf']);
+				}
+			 ?>
 
 			<label for="register"></label>
 			<input type="submit" value="Register">

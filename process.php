@@ -32,9 +32,13 @@ function register_user($post) // just a parameter called post
 		{
 			$errors['email'] = "Please submit a valid email";
 		}
-	if($_POST['password'] != $_POST['passconf']) 
+	if(empty($_POST['password']))
 	{
-		$errors['password'] = "Passwords must match";
+		$errors['password'] = "Please enter a password";
+	}
+	if($_POST['passconf'] != $_POST['password']) 
+	{
+		$errors['passconf'] = "Passwords must match";
 	}
 
 	$_SESSION['errors'] = $errors;
