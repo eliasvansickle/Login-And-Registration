@@ -62,12 +62,44 @@ function register_user($post) // just a parameter called post
 
 }
 
-function login_user($post) // just a parameter called post 
+function login_user($post) // just a parameter called post
 {
+	$query = "SELECT * FROM users WHERE users.password = '{$post['password']}' 
+			  AND users.email = '{$post['email']}'";
+
+	$user = fetch($query); // go and attempt to get user information from the database.
+
+	if(count($user) > 0)
+	{
+		$_SESSION['user_id'] = $user[0]['id'];
+		$_SESSION['first_name'] = $user[0]['first_name'];
+		$_SESSION['logged_in'] = TRUE;
+		header('location: success.php');
+
+	}
+	else
+	{
+		$_SESSION['fail'] = "Can't find a user with those credentials";
+		header("location: index.php");
+		die();
+	}
 
 }
 
 
 
 
+
+
  ?>
+
+
+
+
+
+
+
+
+
+
+

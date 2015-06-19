@@ -70,7 +70,7 @@ require('connection.php');
 				if(isset($_SESSION['registration_success_message']))
 				{
 					echo "<span class='success'>".$_SESSION['registration_success_message']."</span>";
-					unset($_SESSION['registration_success_message']);;
+					unset($_SESSION['registration_success_message']);
 				} 
 
 			 ?>
@@ -87,6 +87,13 @@ require('connection.php');
 
 			<input type="submit" value="Login">
 			<input type="hidden" name="action" value="login">
+			<?php
+				if(isset($_SESSION['fail']))
+				{
+					echo "<span class='error'>".$_SESSION['fail']."</span>";
+					unset($_SESSION['fail']);
+				} 
+			 ?>
 		</form>
 	</div>
 </body>
