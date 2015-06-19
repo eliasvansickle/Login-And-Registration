@@ -2,24 +2,23 @@
 session_start();
 require('connection.php');
 
-$errors = array();
 
 if(isset($_POST['action']) && $_POST['action'] == 'register') 
 {
-	// var_dump($_POST);
 	//call to function
 	register_user($_POST); //uses actual $_POST
 }
 
 if(isset($_POST['action']) && $_POST['action'] == 'login') 
 {
-	// var_dump($_POST);
 	//call to function
 	login_user($_POST);
 }
 
 function register_user($post) // just a parameter called post 
 {
+	////////START OF VALIDATION CHECKS////////
+	$errors = array();
 	if(empty($_POST['first_name'])) 
 	{
 		$errors['first_name'] = "Please enter your first name";
@@ -40,10 +39,23 @@ function register_user($post) // just a parameter called post
 	{
 		$errors['passconf'] = "Passwords must match";
 	}
-
 	$_SESSION['errors'] = $errors;
-	header('location: index.php');
-	die();
+	// header('location: index.php');
+	// die();
+	////////END OF VALIDATION CHECKS////////
+
+	if(!empty($_SESSION['errors']))
+	{
+		// Errors Still exist
+	}
+	else // Insert validated user registration information into the database
+	{
+		$query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at)
+				  VALUES ('{$post['first_name']}', '{$post['last_name']}', '{$post['email']}', '{$post['password']}', NOW(), NOW())";
+		echo $query;
+		die();
+	}
+
 
 }
 
