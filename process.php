@@ -14,6 +14,14 @@ if(isset($_POST['action']) && $_POST['action'] == 'login')
 	//call to function
 	login_user($_POST);
 }
+if(isset($_POST['action']) && $_POST['action'] == 'log_off') 
+{
+	session_destroy();
+	session_start();
+	$_SESSION['log_off'] = "You have been logged off";
+	header('location:index.php');
+	die();
+}
 
 function register_user($post) // just a parameter called post 
 {
@@ -75,7 +83,6 @@ function login_user($post) // just a parameter called post
 		$_SESSION['first_name'] = $user[0]['first_name'];
 		$_SESSION['logged_in'] = TRUE;
 		header('location: success.php');
-
 	}
 	else
 	{
@@ -83,11 +90,7 @@ function login_user($post) // just a parameter called post
 		header("location: index.php");
 		die();
 	}
-
 }
-
-
-
 
 
 

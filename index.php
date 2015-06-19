@@ -72,7 +72,6 @@ require('connection.php');
 					echo "<span class='success'>".$_SESSION['registration_success_message']."</span>";
 					unset($_SESSION['registration_success_message']);
 				} 
-
 			 ?>
 		</form>
 	</div>
@@ -95,6 +94,15 @@ require('connection.php');
 				} 
 			 ?>
 		</form>
+	</div>
+	<div id="log_off">
+		<?php
+			if(isset($_SESSION['log_off']))
+			{
+				echo "<span class='error'>".$_SESSION['log_off']."</span>";
+				unset($_SESSION['log_off']);
+			} 
+		 ?>
 	</div>
 </body>
 </html>
